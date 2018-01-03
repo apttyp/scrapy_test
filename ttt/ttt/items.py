@@ -14,4 +14,4 @@ class TttItem(scrapy.Item):
     # pass
     words = scrapy.Field()
     author = scrapy.Field()
-    tag = scrapy.Field()
+    # tag = scrapy.Field()

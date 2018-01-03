@@ -92,9 +92,12 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
+   # 'ttt.pipelines.TttPipeline': 300,
    'ttt.pipelines.TttPipeline': 300,
 }
 
+MONGO_URI = 'mongodb://localhost:27017'
+MONGO_DB = 'quotes'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True

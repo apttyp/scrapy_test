@@ -42,7 +42,7 @@ UAPOOLS = [
     "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24"
     ]
 
-IPPOOLS = ['61.155.164.109:3128','61.155.164.111:3128','61.155.164.112:3128','61.155.164.108:3128','49.73.228.213:312','61.155.164.110:3128','61.155.164.107:3128']
+IPPOOLS = ['61.155.164.108:3128','61.155.164.112:3128','61.155.164.111:3128','61.155.164.109:3128','61.155.164.110:3128']
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -91,9 +91,9 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'ttt.pipelines.TttPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'ttt.pipelines.TttPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

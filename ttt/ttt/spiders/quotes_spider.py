@@ -1,4 +1,5 @@
 import scrapy
+from ttt.items import TttItem
 
 class QtSpider(scrapy.Spider):
     name = "quotes"
@@ -55,14 +56,20 @@ class QtSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        for item in response.xpath('//div[@class="quote"]'):
-            yield {
-                'text':item.xpath('span/text()').extract_first(),
-                'author':item.xpath('span/small/text()').extract_first(),
-                'tags':item.xpath('div/a/text()').extract_first(),
-            }
-        next_page = response.xpath('//li[@class="next"]/a/@href').extract_first()
-        if next_page is not None:
-            self.log('next_page is :%s' % next_page)
-            # log.msg('next_page is : %s' % next_page, level=log.INFO)
-            yield response.follow(next_page, callback=self.parse)
+        #example5:设置item来存储获取到的数据
+        item = TttItem()
+        item['words'] = response.xpath('//div[@class="quote"]/span[1]/text()').extract()
+        item['author'] = response.xpath('//div[@class="quote"]/span/small/text()').extract()
+        yield item
+        ##example4:循环打印出xpath取出的第一个信息
+        # for item in response.xpath('//div[@class="quote"]'):
+        #     yield {
+        #         'text':item.xpath('span/text()').extract_first(),
+        #         'author':item.xpath('span/small/text()').extract_first(),
+        #         'tags':item.xpath('div/a/text()').extract_first(),
+        #     }
+        # next_page = response.xpath('//li[@class="next"]/a/@href').extract_first()
+        # if next_page is not None:
+        #     self.log('next_page is :%s' % next_page)
+        #     # log.msg('next_page is : %s' % next_page, level=log.INFO)
+        #     yield response.follow(next_page, callback=self.parse)

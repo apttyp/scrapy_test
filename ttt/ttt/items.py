@@ -11,4 +11,7 @@ import scrapy
 class TttItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    # pass
+    words = scrapy.Field()
+    author = scrapy.Field()
+    tag = scrapy.Field()

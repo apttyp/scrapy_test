@@ -7,5 +7,13 @@
 
 
 class TttPipeline(object):
+    # def process_item(self, item, spider):
+    #     return item
+
     def process_item(self, item, spider):
-        return item
+    	with open('res.txt', 'w', encoding='utf-8') as f:
+    		words = item['words']
+    		author = item['author']
+    		for i,j in zip(words, author):
+    			f.write(i+ ':' + j + '\n')
+    	return item
